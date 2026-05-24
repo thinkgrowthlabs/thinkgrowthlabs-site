@@ -1,42 +1,10 @@
 'use client'
 
 // ── Think Growth Labs — thinkgrowthlabs.com ───────────────────────────────────
-// AI product lab. Calm intelligence. Intentional restraint.
+// AI product lab. Intentional restraint.
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/vichet-horn-thinkgrowth/'
 const EMAIL = 'thinkgrowthlabs@gmail.com'
-
-const FOCUS_AREAS = [
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
-    title: 'Communication Intelligence',
-    description: 'AI that surfaces what professionals already know and helps them express it with precision when it matters.',
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-      </svg>
-    ),
-    title: 'Readiness Systems',
-    description: 'Preparation infrastructure for high-stakes moments — context-aware, not templated.',
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <ellipse cx="12" cy="5" rx="9" ry="3" />
-        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-      </svg>
-    ),
-    title: 'Professional Memory',
-    description: 'Tools that accumulate, synthesize, and surface a professional\'s evidence base over time.',
-  },
-]
 
 export default function Home() {
   return (
@@ -165,11 +133,11 @@ export default function Home() {
       <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <SectionLabel>About</SectionLabel>
         <div style={{ maxWidth: 580 }}>
-          <p style={{ fontSize: 17, color: '#c8c8d8', lineHeight: 1.85, marginBottom: 20 }}>
+          <p style={{ fontSize: 17, color: '#c8c8d8', lineHeight: 1.85, marginBottom: 20, textAlign: 'justify' }}>
             Think Growth Labs is a founder-led AI product lab exploring the intersection of
             artificial intelligence, professional development, and human performance.
           </p>
-          <p style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.85 }}>
+          <p style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.85, textAlign: 'justify' }}>
             The work is early-stage, independent, and intentional — built on the belief that
             the right intelligence, delivered at the right moment, changes outcomes.
           </p>
@@ -202,7 +170,7 @@ export default function Home() {
               ELOQ
             </h2>
           </div>
-          <p style={{ fontSize: 16, color: '#8b8b9e', lineHeight: 1.8, maxWidth: 520, marginBottom: 24 }}>
+          <p style={{ fontSize: 16, color: '#8b8b9e', lineHeight: 1.8, maxWidth: 520, marginBottom: 24, textAlign: 'justify' }}>
             An AI platform designed to help professionals communicate with clarity under pressure.
             Built around the idea that most professionals have more evidence of excellence
             than they can access when it matters most.
@@ -219,48 +187,6 @@ export default function Home() {
               </span>
             ))}
           </div>
-        </div>
-      </section>
-
-      <Divider />
-
-      {/* ── Focus Areas ──────────────────────────────────────────────────────── */}
-      <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
-        <SectionLabel>Focus Areas</SectionLabel>
-
-        <div className="focus-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          gap: 16,
-        }}>
-          {FOCUS_AREAS.map(area => (
-            <div
-              key={area.title}
-              style={{
-                backgroundColor: 'rgba(255,255,255,0.02)',
-                border: '1px solid rgba(255,255,255,0.06)',
-                borderRadius: 14,
-                padding: '28px 28px',
-                transition: 'border-color 0.2s, background-color 0.2s',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.11)'
-                ;(e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.04)'
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'
-                ;(e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.02)'
-              }}
-            >
-              <div style={{ color: '#818cf8', marginBottom: 16 }}>{area.icon}</div>
-              <h3 style={{ fontSize: 15, fontWeight: 600, color: '#d8d8e8', marginBottom: 8, letterSpacing: '-0.01em' }}>
-                {area.title}
-              </h3>
-              <p style={{ fontSize: 14, color: '#5a5a6e', lineHeight: 1.75 }}>
-                {area.description}
-              </p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -304,7 +230,7 @@ export default function Home() {
               Think Growth Labs
             </p>
             <p style={{ fontSize: 12, color: '#3a3a4e' }}>
-              AI-enabled professional development
+              AI product lab
             </p>
           </div>
 
