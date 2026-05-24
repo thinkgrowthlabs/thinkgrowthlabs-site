@@ -1,54 +1,40 @@
 'use client'
 
 // ── Think Growth Labs — thinkgrowthlabs.com ───────────────────────────────────
-// Executive credibility layer. Calm intelligence. No hype.
+// AI product lab. Calm intelligence. Intentional restraint.
 
-const LINKEDIN_URL = 'https://www.linkedin.com/company/thinkgrowthlabs'
-const EMAIL = 'hello@thinkgrowthlabs.com'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/vichet-horn-thinkgrowth/'
+const EMAIL = 'thinkgrowthlabs@gmail.com'
 
 const FOCUS_AREAS = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
     ),
-    title: 'Interview Readiness',
-    description: 'Structured preparation that transforms accumulated experience into coherent, confident communication under pressure.',
+    title: 'Communication Intelligence',
+    description: 'AI that surfaces what professionals already know and helps them express it with precision when it matters.',
   },
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-        <polyline points="14 2 14 8 20 8" />
-        <line x1="16" y1="13" x2="8" y2="13" />
-        <line x1="16" y1="17" x2="8" y2="17" />
-        <polyline points="10 9 9 9 8 9" />
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
       </svg>
     ),
-    title: 'Career Storytelling',
-    description: 'Helping professionals surface the coherence in their work and articulate it with clarity, precision, and credibility.',
+    title: 'Readiness Systems',
+    description: 'Preparation infrastructure for high-stakes moments — context-aware, not templated.',
   },
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
       </svg>
     ),
-    title: 'Executive Communication',
-    description: 'Building the discipline to communicate with authority, economy, and presence at every level of an organization.',
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="3" />
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07" />
-      </svg>
-    ),
-    title: 'AI-Assisted Coaching',
-    description: 'Applying AI to deliver personalized, context-aware professional development at a depth that was previously inaccessible.',
+    title: 'Professional Memory',
+    description: 'Tools that accumulate, synthesize, and surface a professional\'s evidence base over time.',
   },
 ]
 
@@ -185,9 +171,7 @@ export default function Home() {
           </p>
           <p style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.85 }}>
             The work is early-stage, independent, and intentional — built on the belief that
-            the right intelligence, delivered at the right moment, changes outcomes. We build
-            focused tools for professionals who want to communicate better, prepare more
-            effectively, and understand their own career story with clarity.
+            the right intelligence, delivered at the right moment, changes outcomes.
           </p>
         </div>
       </section>
@@ -219,13 +203,12 @@ export default function Home() {
             </h2>
           </div>
           <p style={{ fontSize: 16, color: '#8b8b9e', lineHeight: 1.8, maxWidth: 520, marginBottom: 24 }}>
-            An AI platform designed to help professionals organize their career story,
-            prepare for high-stakes conversations, and communicate with clarity under pressure.
+            An AI platform designed to help professionals communicate with clarity under pressure.
             Built around the idea that most professionals have more evidence of excellence
             than they can access when it matters most.
           </p>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            {['Career intelligence', 'AI synthesis', 'Professional narrative', 'Execution readiness'].map(tag => (
+            {['Communication intelligence', 'AI synthesis', 'Professional readiness', 'Context-aware'].map(tag => (
               <span key={tag} style={{
                 fontSize: 12, color: '#6b6b7e',
                 backgroundColor: 'rgba(255,255,255,0.04)',
@@ -247,7 +230,7 @@ export default function Home() {
 
         <div className="focus-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           gap: 16,
         }}>
           {FOCUS_AREAS.map(area => (
@@ -300,33 +283,17 @@ export default function Home() {
             display: 'inline-block',
           }} />
           <span style={{ fontSize: 12, color: '#8b8b9e', fontWeight: 500 }}>
-            Early stage · Private exploration
+            Early stage · Active exploration
           </span>
         </div>
 
         <h2 style={{ fontSize: 22, fontWeight: 600, color: '#f1f1f3', marginBottom: 16, letterSpacing: '-0.02em' }}>
           Currently in concept and MVP exploration.
         </h2>
-        <p style={{ fontSize: 16, color: '#5a5a6e', lineHeight: 1.8, maxWidth: 420, margin: '0 auto 40px' }}>
+        <p style={{ fontSize: 16, color: '#5a5a6e', lineHeight: 1.8, maxWidth: 420, margin: '0 auto' }}>
           Think Growth Labs is early-stage and focused. The work is intentional,
           not announced. More will follow as each initiative matures.
         </p>
-
-        <a
-          href={LINKEDIN_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            color: '#6b6b7e', fontSize: 14, fontWeight: 500,
-            textDecoration: 'none',
-            transition: 'color 0.2s',
-          }}
-          onMouseEnter={e => (e.currentTarget.style.color = '#c8c8d8')}
-          onMouseLeave={e => (e.currentTarget.style.color = '#6b6b7e')}
-        >
-          Follow the journey on LinkedIn →
-        </a>
       </section>
 
       {/* ── Footer ───────────────────────────────────────────────────────────── */}
