@@ -132,7 +132,7 @@ export default function Home() {
       {/* ── About ────────────────────────────────────────────────────────────── */}
       <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <SectionLabel>About</SectionLabel>
-        <div style={{ maxWidth: 580 }}>
+        <div style={{ maxWidth: 580, margin: '0 auto' }}>
           <p style={{ fontSize: 17, color: '#c8c8d8', lineHeight: 1.85, marginBottom: 20, textAlign: 'justify' }}>
             Think Growth Labs is a founder-led AI product lab exploring the intersection of
             artificial intelligence, professional development, and human performance.
