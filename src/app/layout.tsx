@@ -1,22 +1,76 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
+const SITE_URL = 'https://thinkgrowthlabs.com'
+const TITLE = 'Think Growth Labs'
+const DESCRIPTION = 'A founder-led AI product lab building tools for professional growth, execution readiness, and communication performance.'
+
 export const metadata: Metadata = {
-  title: 'Think Growth Labs',
-  description: 'Building AI-enabled tools for professional growth, execution readiness, and communication performance.',
-  openGraph: {
-    title: 'Think Growth Labs',
-    description: 'Building AI-enabled tools for professional growth, execution readiness, and communication performance.',
-    url: 'https://thinkgrowthlabs.com',
-    siteName: 'Think Growth Labs',
-    type: 'website',
+  metadataBase: new URL(SITE_URL),
+
+  title: {
+    default: TITLE,
+    template: `%s — ${TITLE}`,
   },
+  description: DESCRIPTION,
+
+  keywords: [
+    'AI professional development',
+    'career intelligence',
+    'interview preparation',
+    'executive communication',
+    'AI coaching',
+    'professional growth',
+    'Think Growth Labs',
+    'ELOQ',
+  ],
+
+  authors: [{ name: 'Think Growth Labs', url: SITE_URL }],
+
+  creator: 'Think Growth Labs',
+  publisher: 'Think Growth Labs',
+
+  // Canonical
+  alternates: {
+    canonical: SITE_URL,
+  },
+
+  // Open Graph — controls LinkedIn, Slack, iMessage previews
+  openGraph: {
+    type: 'website',
+    url: SITE_URL,
+    siteName: TITLE,
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: 'en_US',
+  },
+
+  // Twitter card
   twitter: {
     card: 'summary_large_image',
-    title: 'Think Growth Labs',
-    description: 'Building AI-enabled tools for professional growth, execution readiness, and communication performance.',
+    title: TITLE,
+    description: DESCRIPTION,
+    creator: '@thinkgrowthlabs',
   },
-  metadataBase: new URL('https://thinkgrowthlabs.com'),
+
+  // Robots
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#09090f',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

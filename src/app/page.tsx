@@ -58,7 +58,7 @@ export default function Home() {
     <main style={{ backgroundColor: '#09090f', minHeight: '100vh', color: '#f1f1f3' }}>
 
       {/* ── Nav ──────────────────────────────────────────────────────────────── */}
-      <nav className="fade-up" style={{ maxWidth: 760, margin: '0 auto', padding: '28px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <nav className="fade-up nav-inner" style={{ maxWidth: 760, margin: '0 auto', padding: '28px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{ fontSize: 14, fontWeight: 600, color: '#f1f1f3', letterSpacing: '-0.01em' }}>
           Think Growth Labs
         </span>
@@ -88,7 +88,7 @@ export default function Home() {
       </nav>
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px 100px', textAlign: 'center' }}>
+      <section className="hero-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px 100px', textAlign: 'center' }}>
 
         {/* Glow dot */}
         <div className="glow-pulse fade-up" style={{
@@ -183,7 +183,7 @@ export default function Home() {
       <Divider />
 
       {/* ── About ────────────────────────────────────────────────────────────── */}
-      <section style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
+      <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <SectionLabel>About</SectionLabel>
         <div style={{ maxWidth: 580 }}>
           <p style={{ fontSize: 17, color: '#c8c8d8', lineHeight: 1.85, marginBottom: 20 }}>
@@ -202,7 +202,7 @@ export default function Home() {
       <Divider />
 
       {/* ── Current Initiative — ELOQ ─────────────────────────────────────────── */}
-      <section style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
+      <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <SectionLabel>Current Initiative</SectionLabel>
 
         <a
@@ -212,6 +212,7 @@ export default function Home() {
           style={{ textDecoration: 'none', display: 'block' }}
         >
           <div
+            className="eloq-card"
             style={{
               backgroundColor: 'rgba(129, 140, 248, 0.05)',
               border: '1px solid rgba(129, 140, 248, 0.2)',
@@ -264,10 +265,10 @@ export default function Home() {
       <Divider />
 
       {/* ── Focus Areas ──────────────────────────────────────────────────────── */}
-      <section style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
+      <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <SectionLabel>Focus Areas</SectionLabel>
 
-        <div style={{
+        <div className="focus-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: 16,
@@ -306,7 +307,7 @@ export default function Home() {
       <Divider />
 
       {/* ── Status ───────────────────────────────────────────────────────────── */}
-      <section style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px', textAlign: 'center' }}>
+      <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px', textAlign: 'center' }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
           backgroundColor: 'rgba(255,255,255,0.03)',
@@ -356,7 +357,7 @@ export default function Home() {
         borderTop: '1px solid rgba(255,255,255,0.06)',
         padding: '40px 24px',
       }}>
-        <div style={{ maxWidth: 760, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+        <div className="footer-inner" style={{ maxWidth: 760, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
           <div>
             <p style={{ fontSize: 14, fontWeight: 600, color: '#f1f1f3', marginBottom: 4 }}>
               Think Growth Labs
