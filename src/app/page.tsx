@@ -39,7 +39,7 @@ const PRODUCTS: Product[] = [
     ],
     status: 'live',
     href: ELOQ_URL,
-    ctaLabel: 'Learn more about ELOQ',
+    ctaLabel: 'Use ELOQ',
   },
 ]
 
@@ -80,7 +80,7 @@ export default function Home() {
         </p>
 
         <div className="fade-up fade-up-delay-4" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <LinkButton href={ELOQ_URL} variant="primary" external>Explore ELOQ →</LinkButton>
+          <LinkButton href={ELOQ_URL} variant="primary" external>Use ELOQ →</LinkButton>
           <LinkButton href={LINKEDIN_URL} variant="ghost" external>Connect on LinkedIn</LinkButton>
         </div>
 
