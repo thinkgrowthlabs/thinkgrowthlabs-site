@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Think Growth Labs — Building AI-enabled tools for professional growth'
+export const alt = 'Think Growth Labs — Building AI-enabled products for professional growth'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -72,7 +72,7 @@ export default function OGImage() {
             flexWrap: 'wrap',
           }}
         >
-          Building AI-enabled tools for professional growth.
+          Building AI-enabled products for professional growth.
         </div>
 
         {/* Subline */}
@@ -85,7 +85,7 @@ export default function OGImage() {
             display: 'flex',
           }}
         >
-          A founder-led product lab at the intersection of AI, leadership, and professional performance.
+          AI products that help professionals prepare, communicate, and perform at their best.
         </div>
 
         {/* Domain watermark */}
