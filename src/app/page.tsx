@@ -1,274 +1,284 @@
 'use client'
 
 // ── Think Growth Labs — thinkgrowthlabs.com ───────────────────────────────────
-// A founder-led AI product COMPANY. ELOQ is the first product (live). The Products
-// section is a list, so future products are added by appending to PRODUCTS — no redesign.
+// Parent AI product company; ELOQ is the flagship product (live). The page is an
+// editorial, single-column narrative: who we are → what we believe → the product
+// → how it works. Structured so future products append as new sections without a
+// redesign. No dependencies; motion is CSS + a light IntersectionObserver.
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const LINKEDIN_URL = 'https://www.linkedin.com/in/vichet-horn-thinkgrowth/'
+// Founder is the strongest public presence behind TGL — "Meet the Founder" and the
+// footer "Founder LinkedIn" both point to Vichet Horn's PERSONAL profile (intentional;
+// not the company or ELOQ LinkedIn pages).
+const FOUNDER_LINKEDIN = 'https://www.linkedin.com/in/vichet-horn-thinkgrowth/'
 const EMAIL = 'thinkgrowthlabs@gmail.com'
 const ELOQ_URL = 'https://witheloq.com'
 
-type Product = {
-  name: string
-  tagline: string
-  description: string[]
-  capabilities: string[]
-  status: 'live' | 'building'
-  href: string
-  ctaLabel: string
-}
+// ELOQ's capability stanza — the feature concepts, elevated from chips to a spoken list.
+const CAPABILITIES = [
+  ['Find', 'opportunities that fit.'],
+  ['Understand', 'where you stand.'],
+  ['Organize', 'the experience that proves it.'],
+  ['Prepare', 'stronger answers.'],
+  ['Rehearse', 'until they sound like you.'],
+]
 
-// The company's product line. Today: ELOQ. Future products append here.
-const PRODUCTS: Product[] = [
-  {
-    name: 'ELOQ',
-    tagline: 'Preparation creates eloquence.',
-    description: [
-      'ELOQ is a professional readiness platform built around your experience.',
-      'It helps professionals find the right opportunities, organize their career, and turn real experience into prepared, rehearsed confidence — expressed in their own voice.',
-      'Instead of generating generic answers, ELOQ helps you surface the right experience, organize it into stronger stories, and rehearse until you can express it clearly when it matters.',
-      'AI amplifies what is already yours; it never replaces it.',
-    ],
-    capabilities: [
-      'Professional Readiness',
-      'Find the right opportunity',
-      'Organize your career',
-      'Professional Memory',
-      'Prepare with confidence',
-      'Rehearse in your own voice',
-    ],
-    status: 'live',
-    href: ELOQ_URL,
-    ctaLabel: 'Use ELOQ',
-  },
+// The ELOQ journey — experience becomes the next job; Professional Memory is the foundation.
+const JOURNEY = [
+  { key: 'EXPERIENCE', sub: "what you've done", role: 'start' },
+  { key: 'FIND', sub: 'roles that fit' },
+  { key: 'FIT', sub: 'where you stand' },
+  { key: 'PREPARE', sub: 'stronger answers' },
+  { key: 'REHEARSE', sub: 'in your voice' },
+  { key: 'NEXT JOB', sub: "what's next", role: 'end' },
 ]
 
 export default function Home() {
+  const [scrolled, setScrolled] = useState(false)
+  const mainRef = useRef<HTMLElement>(null)
+
+  // Sticky-nav treatment appears once the page has moved.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Scroll reveal — opt-in via JS so no-JS and reduced-motion users always see content.
+  useEffect(() => {
+    const root = mainRef.current
+    if (!root) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    root.classList.add('reveal-on')
+    const els = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target) }
+      })
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 })
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+
   return (
-    <main style={{ backgroundColor: '#09090f', minHeight: '100vh', color: '#f1f1f3' }}>
-
-      {/* ── Nav ──────────────────────────────────────────────────────────────── */}
-      <nav className="fade-up nav-inner" style={{ maxWidth: 760, margin: '0 auto', padding: '28px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span style={{ fontSize: 14, fontWeight: 600, color: '#f1f1f3', letterSpacing: '-0.01em' }}>
-          Think Growth Labs
-        </span>
-        <a
-          href={`mailto:${EMAIL}`}
-          style={{ fontSize: 13, color: '#6b6b7e', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }}
-          onMouseEnter={e => (e.currentTarget.style.color = '#f1f1f3')}
-          onMouseLeave={e => (e.currentTarget.style.color = '#6b6b7e')}
-        >
-          Get in touch
-        </a>
-      </nav>
-
-      {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="hero-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px 100px', textAlign: 'center' }}>
-
-        <div className="glow-pulse fade-up" style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#818cf8', margin: '0 auto 40px' }} />
-
-        <p className="fade-up fade-up-delay-1" style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#818cf8', marginBottom: 20 }}>
-          Think Growth Labs
-        </p>
-
-        <h1 className="fade-up fade-up-delay-2" style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.025em', color: '#f1f1f3', maxWidth: 620, margin: '0 auto 24px' }}>
-          Building AI-enabled products for professional growth.
-        </h1>
-
-        <p className="fade-up fade-up-delay-3" style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.75, maxWidth: 500, margin: '0 auto 48px' }}>
-          We build AI products that help professionals turn their experience into opportunity, preparation, and confident performance.
-        </p>
-
-        <div className="fade-up fade-up-delay-4" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <LinkButton href={ELOQ_URL} variant="primary" external>Use ELOQ →</LinkButton>
-          <LinkButton href={LINKEDIN_URL} variant="ghost" external>Connect on LinkedIn</LinkButton>
+    <>
+      {/* ── Nav ─────────────────────────────────────────────────────────────── */}
+      <header className={`nav${scrolled ? ' scrolled' : ''}`}>
+        <div className="container nav-inner">
+          <a href="#top" className="wordmark" aria-label="Think Growth Labs — home">
+            <span className="dot" aria-hidden="true" />
+            Think Growth Labs
+          </a>
+          <a href={`mailto:${EMAIL}`} className="nav-link">Get in touch</a>
         </div>
+      </header>
 
-      </section>
+      <main id="top" ref={mainRef}>
 
-      <Divider />
+        {/* ── Hero ──────────────────────────────────────────────────────────── */}
+        <section className="hero" aria-labelledby="hero-h">
+          <div className="hero-glow" aria-hidden="true" />
+          <HeroField />
+          <div className="container hero-content">
+            <p className="eyebrow fade-up d1">Think Growth Labs</p>
+            <h1 id="hero-h" className="fade-up d2">
+              We build AI products that turn experience into <span className="accent">what comes next.</span>
+            </h1>
+            <p className="hero-sub fade-up d3">
+              Think Growth Labs builds thoughtful AI products that help professionals understand
+              what they know, make more of what they’ve done, and move forward with clarity and confidence.
+            </p>
+            <div className="hero-cta fade-up d4">
+              <a href={ELOQ_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                Use ELOQ <span className="arrow" aria-hidden="true">→</span>
+              </a>
+              <a href={FOUNDER_LINKEDIN} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+                Meet the Founder <span className="arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </section>
 
-      {/* ── About ────────────────────────────────────────────────────────────── */}
-      <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
-        <SectionLabel>About</SectionLabel>
-        <div style={{ maxWidth: 600, margin: '0 auto' }}>
-          <p style={{ fontSize: 17, color: '#c8c8d8', lineHeight: 1.85, marginBottom: 20 }}>
-            Think Growth Labs is a founder-led AI product company building thoughtful
-            software for professional growth.
-          </p>
-          <p style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.85, marginBottom: 20 }}>
-            Our products use AI to help professionals make more of what they already have — their
-            experience, knowledge, and judgment — by organizing it, making it accessible when needed,
-            and helping them communicate it with confidence.
-          </p>
-          <p style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.85 }}>
-            We believe AI should amplify human capability, not replace it.
-          </p>
-        </div>
-      </section>
+        <div className="container"><hr className="hr" /></div>
 
-      <Divider />
+        {/* ── About ─────────────────────────────────────────────────────────── */}
+        <section className="section" aria-labelledby="about-h">
+          <div className="container">
+            <div className="section-head" data-reveal>
+              <span className="section-index">01</span>
+              <span className="eyebrow eyebrow-muted" id="about-h">About</span>
+            </div>
+            <div className="about-grid">
+              <p className="about-lead" data-reveal>
+                Your experience should become <em>more valuable with time</em> — not harder to access.
+              </p>
+              <div className="about-body" data-reveal>
+                <p>
+                  Think Growth Labs is a founder-led AI product company building thoughtful software
+                  around a simple idea: your experience should compound, not fade.
+                </p>
+                <p>
+                  We use AI to help professionals organize what they know, surface what matters,
+                  and apply their experience when opportunity appears.
+                </p>
+                <p className="quiet">AI should amplify human capability — not replace it.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      {/* ── Products ─────────────────────────────────────────────────────────── */}
-      <section className="section-pad" style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
-        <SectionLabel>Products</SectionLabel>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          {PRODUCTS.map(p => <ProductCard key={p.name} product={p} />)}
-        </div>
-      </section>
+        <div className="container"><hr className="hr" /></div>
 
-      {/* ── Footer ───────────────────────────────────────────────────────────── */}
-      <footer style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '40px 24px', marginTop: 40 }}>
-        <div className="footer-inner" style={{ maxWidth: 760, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+        {/* ── ELOQ — flagship product ───────────────────────────────────────── */}
+        <section className="section" aria-labelledby="eloq-h">
+          <div className="container">
+            <div className="section-head" data-reveal>
+              <span className="section-index">02</span>
+              <span className="eyebrow eyebrow-muted">Flagship product</span>
+            </div>
+
+            <div className="eloq" data-reveal>
+              <div className="eloq-top">
+                <span className="eloq-wordmark" id="eloq-h">ELOQ</span>
+                <span className="badge-live"><span className="dot" aria-hidden="true" />Live</span>
+              </div>
+
+              <p className="eloq-tagline">Preparation creates eloquence.</p>
+              <h2 className="eloq-statement">Your AI partner to get your next job.</h2>
+              <p className="eloq-support">
+                ELOQ brings your experience, job search, and interview preparation into one
+                intelligent workspace.
+              </p>
+
+              <div className="stanza">
+                {CAPABILITIES.map(([verb, rest], i) => (
+                  <div className="stanza-row" data-reveal="stagger" style={{ ['--rd' as string]: `${i * 0.06}s` }} key={verb}>
+                    <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="t"><b>{verb}</b> {rest}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="memory" data-reveal>
+                <span className="glyph" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <circle cx="9" cy="9" r="2.4" fill="#a5b4fc" />
+                    <circle cx="9" cy="9" r="6.5" stroke="#818cf8" strokeOpacity="0.5" />
+                    <circle cx="9" cy="2" r="1.1" fill="#818cf8" />
+                    <circle cx="15" cy="12" r="1.1" fill="#818cf8" />
+                    <circle cx="3" cy="12" r="1.1" fill="#818cf8" />
+                  </svg>
+                </span>
+                <p>
+                  At the center is <b>Professional Memory</b> — a living understanding of your career
+                  that helps ELOQ surface the right story, strength, or evidence when you need it.
+                </p>
+              </div>
+
+              <p className="eloq-closer">
+                No generic answers. No invented experience.{' '}
+                <span className="quiet">Your career — organized, activated, and ready for what’s next.</span>
+              </p>
+
+              <div className="eloq-cta">
+                <a href={ELOQ_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Use ELOQ <span className="arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              {/* ── How ELOQ works — the journey ──────────────────────────────── */}
+              <div className="journey" data-reveal aria-label="How ELOQ works: experience becomes your next job">
+                <div className="journey-cap">
+                  <span className="eyebrow">How it works</span>
+                  <span className="rule" aria-hidden="true" />
+                </div>
+
+                <div className="flow">
+                  <div className="flow-track">
+                    {JOURNEY.map((s, i) => (
+                      <div
+                        key={s.key}
+                        className={`stage${s.role === 'start' ? ' is-start' : ''}${s.role === 'end' ? ' is-end' : ''}`}
+                        data-reveal="stagger"
+                        style={{ ['--rd' as string]: `${i * 0.08}s` }}
+                      >
+                        <span className="node" aria-hidden="true"><i /></span>
+                        <span className="label">{s.key}</span>
+                        <span className="sub">{s.sub}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* risers connect each stage down into the Professional Memory foundation (desktop) */}
+                  <div className="risers" aria-hidden="true">
+                    {JOURNEY.map((s, i) => (
+                      <span key={s.key} style={{ left: `${((i + 0.5) / JOURNEY.length) * 100}%` }} />
+                    ))}
+                  </div>
+
+                  <div className="foundation">
+                    <span className="k">Professional Memory</span>
+                    <span className="v">the intelligence beneath every step</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* ── Footer ──────────────────────────────────────────────────────────── */}
+      <footer className="footer">
+        <div className="container footer-inner">
           <div>
-            <p style={{ fontSize: 14, fontWeight: 600, color: '#c8c8d8', marginBottom: 4 }}>
-              Think Growth Labs
-            </p>
-            <p style={{ fontSize: 12, color: '#3a3a4e' }}>
-              AI product company
-            </p>
+            <p className="name">Think Growth Labs</p>
+            <p className="tag">AI product company</p>
           </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-            <FooterLink href={ELOQ_URL} external>ELOQ</FooterLink>
-            <FooterLink href={LINKEDIN_URL} external>LinkedIn</FooterLink>
-            <FooterLink href={`mailto:${EMAIL}`}>Contact</FooterLink>
-          </div>
+          <nav className="footer-links" aria-label="Footer">
+            <a className="footer-link" href={ELOQ_URL} target="_blank" rel="noopener noreferrer">ELOQ</a>
+            <a className="footer-link" href={FOUNDER_LINKEDIN} target="_blank" rel="noopener noreferrer">Founder LinkedIn</a>
+            <a className="footer-link" href={`mailto:${EMAIL}`}>Contact</a>
+          </nav>
         </div>
       </footer>
-
-    </main>
+    </>
   )
 }
 
-// ── Shared components ─────────────────────────────────────────────────────────
-
-function ProductCard({ product }: { product: Product }) {
+// ── Hero background — an abstract "signal" field: scattered nodes on the left
+//    converging into an aligned, brighter node on the right (experience → next).
+function HeroField() {
   return (
-    <div
-      className="eloq-card fade-up"
-      style={{
-        backgroundColor: 'rgba(129, 140, 248, 0.04)',
-        border: '1px solid rgba(129, 140, 248, 0.15)',
-        borderRadius: 16,
-        padding: '36px 40px',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginBottom: 6, flexWrap: 'wrap' }}>
-        <h2 style={{ fontSize: 26, fontWeight: 700, color: '#f1f1f3', letterSpacing: '-0.02em', margin: 0 }}>
-          {product.name}
-        </h2>
-        {product.status === 'live' && <LiveBadge />}
-      </div>
-
-      <p style={{ fontSize: 14, fontWeight: 600, color: '#818cf8', letterSpacing: '0.01em', marginBottom: 20 }}>
-        {product.tagline}
-      </p>
-
-      {product.description.map((para, i) => (
-        <p key={i} style={{ fontSize: 16, color: '#8b8b9e', lineHeight: 1.8, maxWidth: 560, marginBottom: 16 }}>
-          {para}
-        </p>
-      ))}
-
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', margin: '20px 0 28px' }}>
-        {product.capabilities.map(cap => (
-          <span key={cap} style={{
-            fontSize: 12, color: '#9a9ab0',
-            backgroundColor: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            padding: '5px 11px', borderRadius: 6,
-          }}>
-            {cap}
-          </span>
-        ))}
-      </div>
-
-      <LinkButton href={product.href} variant="primary" external>{product.ctaLabel} →</LinkButton>
-    </div>
-  )
-}
-
-function LiveBadge() {
-  return (
-    <span style={{
-      display: 'inline-flex', alignItems: 'center', gap: 7,
-      backgroundColor: 'rgba(52, 211, 153, 0.08)',
-      border: '1px solid rgba(52, 211, 153, 0.25)',
-      borderRadius: 100, padding: '5px 12px',
-    }}>
-      <span className="glow-pulse" style={{
-        width: 6, height: 6, borderRadius: '50%',
-        backgroundColor: '#34d399',
-        boxShadow: '0 0 8px 2px rgba(52, 211, 153, 0.5)',
-        display: 'inline-block',
-      }} />
-      <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#34d399' }}>
-        Live
-      </span>
-    </span>
-  )
-}
-
-function LinkButton({ href, children, variant, external }: {
-  href: string; children: React.ReactNode; variant: 'primary' | 'ghost'; external?: boolean
-}) {
-  const [hover, setHover] = useState(false)
-  const primary = variant === 'primary'
-  const style: React.CSSProperties = {
-    display: 'inline-flex', alignItems: 'center', gap: 8,
-    fontWeight: 500, fontSize: 14, padding: '12px 24px',
-    borderRadius: 12, textDecoration: 'none',
-    transition: 'border-color 0.2s, color 0.2s, background-color 0.2s',
-    backgroundColor: primary
-      ? (hover ? 'rgba(129,140,248,0.22)' : 'rgba(129,140,248,0.14)')
-      : (hover ? 'rgba(255,255,255,0.09)' : 'rgba(255,255,255,0.06)'),
-    border: primary
-      ? `1px solid rgba(129,140,248,${hover ? 0.55 : 0.35})`
-      : `1px solid rgba(255,255,255,${hover ? 0.2 : 0.1})`,
-    color: primary ? (hover ? '#f1f1f3' : '#dcdcf5') : (hover ? '#f1f1f3' : '#c8c8d8'),
-  }
-  return (
-    <a
-      href={href}
-      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      style={style}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      {children}
-    </a>
-  )
-}
-
-function FooterLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
-  return (
-    <a
-      href={href}
-      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      style={{ fontSize: 13, color: '#4a4a5e', textDecoration: 'none', transition: 'color 0.2s' }}
-      onMouseEnter={e => (e.currentTarget.style.color = '#c8c8d8')}
-      onMouseLeave={e => (e.currentTarget.style.color = '#4a4a5e')}
-    >
-      {children}
-    </a>
-  )
-}
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#3a3a4e', marginBottom: 32 }}>
-      {children}
-    </p>
-  )
-}
-
-function Divider() {
-  return (
-    <div style={{ maxWidth: 760, margin: '0 auto', padding: '0 24px' }}>
-      <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.05)' }} />
+    <div className="hero-field" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid slice" fill="none">
+        <defs>
+          <linearGradient id="tgl-line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#818cf8" stopOpacity="0.05" />
+            <stop offset="1" stopColor="#818cf8" stopOpacity="0.5" />
+          </linearGradient>
+        </defs>
+        {/* connective lines drifting rightward toward convergence */}
+        <g stroke="url(#tgl-line)" strokeWidth="1">
+          <path d="M120 130 L400 200 L720 250 L1020 280" />
+          <path d="M90 330 L360 300 L700 270 L1020 280" />
+          <path d="M180 430 L470 360 L760 300 L1020 280" />
+          <path d="M150 240 L520 250 L1020 280" />
+        </g>
+        {/* faint scattered nodes (experience) */}
+        <g fill="#c7cbf5">
+          {[
+            [120, 130], [90, 330], [180, 430], [150, 240], [360, 300],
+            [400, 200], [470, 360], [520, 250], [700, 270], [720, 250], [760, 300],
+          ].map(([x, y], i) => (
+            <circle key={i} cx={x} cy={y} r={2} opacity={0.28} />
+          ))}
+        </g>
+        {/* convergence node (what comes next) */}
+        <circle cx="1020" cy="280" r="5" fill="#a5b4fc" />
+        <circle cx="1020" cy="280" r="12" stroke="#818cf8" strokeOpacity="0.5" />
+      </svg>
     </div>
   )
 }
