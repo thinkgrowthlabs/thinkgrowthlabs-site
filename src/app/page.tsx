@@ -26,8 +26,10 @@ const PRODUCTS: Product[] = [
     name: 'ELOQ',
     tagline: 'Preparation creates eloquence.',
     description: [
-      'ELOQ is a professional readiness platform, built around your experience. It helps professionals find the right opportunities, organize their career, and turn real experience into prepared, rehearsed confidence — expressed in their own voice.',
-      'Instead of generating generic answers, ELOQ helps you reach your own experience, organize it into stronger stories, and rehearse until you can express it clearly when it matters. AI amplifies what is already yours; it never replaces it.',
+      'ELOQ is a professional readiness platform built around your experience.',
+      'It helps professionals find the right opportunities, organize their career, and turn real experience into prepared, rehearsed confidence — expressed in their own voice.',
+      'Instead of generating generic answers, ELOQ helps you surface the right experience, organize it into stronger stories, and rehearse until you can express it clearly when it matters.',
+      'AI amplifies what is already yours; it never replaces it.',
     ],
     capabilities: [
       'Professional Readiness',
@@ -76,7 +78,7 @@ export default function Home() {
         </h1>
 
         <p className="fade-up fade-up-delay-3" style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.75, maxWidth: 500, margin: '0 auto 48px' }}>
-          We design AI products that help professionals prepare, communicate, and perform at their best.
+          We build AI products that help professionals turn their experience into opportunity, preparation, and confident performance.
         </p>
 
         <div className="fade-up fade-up-delay-4" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -93,16 +95,16 @@ export default function Home() {
         <SectionLabel>About</SectionLabel>
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
           <p style={{ fontSize: 17, color: '#c8c8d8', lineHeight: 1.85, marginBottom: 20 }}>
-            Think Growth Labs is a founder-led AI product company focused on building thoughtful
+            Think Growth Labs is a founder-led AI product company building thoughtful
             software for professional growth.
           </p>
           <p style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.85, marginBottom: 20 }}>
-            Our products combine artificial intelligence with practical experience to help professionals
-            communicate more clearly, prepare more effectively, and perform with confidence when it
-            matters most.
+            Our products use AI to help professionals make more of what they already have — their
+            experience, knowledge, and judgment — by organizing it, making it accessible when needed,
+            and helping them communicate it with confidence.
           </p>
           <p style={{ fontSize: 17, color: '#8b8b9e', lineHeight: 1.85 }}>
-            We believe AI should amplify human capability—not replace it.
+            We believe AI should amplify human capability, not replace it.
           </p>
         </div>
       </section>
