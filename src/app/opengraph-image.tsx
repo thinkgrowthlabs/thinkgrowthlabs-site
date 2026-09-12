@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Think Growth Labs — Building AI-enabled products for professional growth'
+export const alt = 'Think Growth Labs — We build AI products that turn experience into what comes next'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -72,7 +72,7 @@ export default function OGImage() {
             flexWrap: 'wrap',
           }}
         >
-          Building AI-enabled products for professional growth.
+          We build AI products that turn experience into what comes next.
         </div>
 
         {/* Subline */}
@@ -85,7 +85,7 @@ export default function OGImage() {
             display: 'flex',
           }}
         >
-          AI products that help professionals prepare, communicate, and perform at their best.
+          Thoughtful AI for professional growth. ELOQ, our flagship, is your AI partner to get your next job.
         </div>
 
         {/* Domain watermark */}
