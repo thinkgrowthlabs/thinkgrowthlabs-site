@@ -141,7 +141,11 @@ export default function Home() {
 
             <div className="eloq" data-reveal>
               <div className="eloq-top">
-                <span className="eloq-wordmark" id="eloq-h">ELOQ</span>
+                {/* ELOQ product lockup — the FINAL locked Signature Identity (canonical outlined
+                    vector; the same wordmark + Q app icon used on witheloq.com and in the app).
+                    Never a font or hand-typed "ELOQ". */}
+                <img className="eloq-appicon" src="/eloq-app-icon.svg" alt="" aria-hidden="true" width={52} height={52} />
+                <img className="eloq-wordmark" id="eloq-h" src="/eloq-wordmark.svg" alt="ELOQ" width={214} height={47} />
                 <span className="badge-live"><span className="dot" aria-hidden="true" />Live</span>
               </div>
 
