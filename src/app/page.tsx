@@ -150,7 +150,7 @@ export default function Home() {
               </div>
 
               <p className="eloq-tagline">Preparation creates eloquence.</p>
-              <h2 className="eloq-statement">Your AI partner to get your next job.</h2>
+              <h2 className="eloq-statement">Your AI partner to help you get your next job.</h2>
               <p className="eloq-support">
                 ELOQ brings your experience, job search, and interview preparation into one
                 intelligent workspace.
