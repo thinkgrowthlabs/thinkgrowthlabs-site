@@ -3,7 +3,7 @@ import './globals.css'
 
 const SITE_URL = 'https://thinkgrowthlabs.com'
 const TITLE = 'Think Growth Labs'
-const DESCRIPTION = 'Think Growth Labs is a founder-led AI product company building thoughtful software for professional growth. Our flagship product, ELOQ — your AI partner to get your next job — is live.'
+const DESCRIPTION = 'Think Growth Labs is a founder-led AI product company building thoughtful software for professional growth. Our flagship product, ELOQ — your AI partner to help you get your next job — is live.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -85,7 +85,7 @@ export default function OGImage() {
             display: 'flex',
           }}
         >
-          Thoughtful AI for professional growth. ELOQ, our flagship, is your AI partner to get your next job.
+          Thoughtful AI for professional growth. ELOQ, our flagship, is your AI partner to help you get your next job.
         </div>
 
         {/* Domain watermark */}
