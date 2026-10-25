@@ -153,7 +153,8 @@ export default function Home() {
               <h2 className="eloq-statement">Your AI partner to help you get your next job.</h2>
               <p className="eloq-support">
                 ELOQ brings your experience, job search, and interview preparation into one
-                intelligent workspace.
+                intelligent workspace. You don&rsquo;t just prepare for an interview &mdash; you
+                train for it, rehearsing your own answers until they come back naturally.
               </p>
 
               <div className="stanza">
